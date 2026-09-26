@@ -1,8 +1,11 @@
 class Solution:
     def evaluate(self, s: str, knowledge: list[list[str]]) -> str:
 
-        # Store key-value pairs in a dictionary
-        mp = dict(knowledge)
+        # Create a dictionary from knowledge
+        mp = {}
+
+        for key, value in knowledge:
+            mp[key] = value
 
         result = []
         i = 0
@@ -10,9 +13,10 @@ class Solution:
         while i < len(s):
 
             if s[i] == '(':
-                j = i + 1
 
                 # Find the closing bracket
+                j = i + 1
+
                 while s[j] != ')':
                     j += 1
 
@@ -26,6 +30,7 @@ class Solution:
                 i = j + 1
 
             else:
+                # Normal character
                 result.append(s[i])
                 i += 1
 
